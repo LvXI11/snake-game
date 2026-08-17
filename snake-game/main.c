@@ -29,22 +29,27 @@ int main(void) {
 	s.body[0].x = 10; s.body[0].y = 10;
 	s.body[1].x = 9; s.body[1].y = 10;
 	s.body[2].x = 8; s.body[2].y = 10;
-
-	for (int y = 0; y < HEIGHT; y++) {
-		for (int x = 0; x < WIDTH; x++) {
-			char ch = ' ';
-			bool on_snake = false;
-			for (int i = 0; i < s.len; i++) {
-				if (s.body[i].x == x && s.body[i].y == y) {
-					on_snake = true;
-					break;
+	s.dir = RIGHT;
+	while (1) {
+		snake_move(&s);
+		system("cls");
+		for (int y = 0; y < HEIGHT; y++) {
+			for (int x = 0; x < WIDTH; x++) {
+				char ch = ' ';
+				bool on_snake = false;
+				for (int i = 0; i < s.len; i++) {
+					if (s.body[i].x == x && s.body[i].y == y) {
+						on_snake = true;
+						break;
+					}
 				}
+				if (on_snake)ch = '*';
+				if (x == 0 || y == 0 || x == WIDTH - 1 || y == HEIGHT - 1)ch = '#';
+				printf("%c", ch);
 			}
-			if (on_snake)ch = '*';
-			if (x == 0 || y == 0 || x == WIDTH - 1 || y == HEIGHT - 1)ch = '#';
-			printf("%c", ch);
+			printf("\n");
 		}
-		printf("\n");
+		Sleep(200);
 	}
 	
 	return 0;
@@ -53,10 +58,10 @@ int main(void) {
 void snake_move(Snake* s) {
 	Point new_head = s->body[0];
 	switch (s->dir) {
-	case 0:new_head.y--; break;
-	case 1:new_head.y++; break;
-	case 2:new_head.x--; break;
-	case 3:new_head.x++; break;
+	case UP:new_head.y--; break;
+	case DOWN:new_head.y++; break;
+	case LEFT:new_head.x--; break;
+	case RIGHT:new_head.x++; break;
 	}
 	for (int i = s->len - 1; i > 0; i--) {
 		s->body[i] = s->body[i - 1];
