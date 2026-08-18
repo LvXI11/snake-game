@@ -1,0 +1,19 @@
+Point food;
+srand((unsigned)time(NULL));
+
+void spawn(Snake* s){
+Point p;
+bool on_food;
+do{
+p.x=rand()%20+1;
+p.y=rand()%20+1;
+on_food=false;
+for(int i=0;i<s->len;s++){
+if(p.x==s->body[i].x&&p.y==s->body[i].y){
+	on_food=true;
+	break;
+	}
+}
+}while(on_food);
+food=p;
+}
