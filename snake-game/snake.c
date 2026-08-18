@@ -3,6 +3,7 @@
 #include<stdbool.h>
 #include<time.h>
 #include<Windows.h>
+#include<conio.h>
 extern Point food;
 extern int score;
 extern HANDLE h_out;

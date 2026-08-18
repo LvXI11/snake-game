@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef SNAKE_H
+#define SNAKE_H
 #define WIDTH 22
 #define HEIGHT 22
 #include<stdbool.h>
@@ -18,8 +19,6 @@ typedef struct {
 	int len;
 	Dir dir;
 }Snake;
-#ifndef SNAKE_H
-#define SNAKE_H
 bool snake_move(Snake* s);     // 移动蛇，返回是否安全
 Dir get_dir(Dir current);      // 读取方向键
 void spawn_food(Snake* s);     // 生成食物

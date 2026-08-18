@@ -1,7 +1,8 @@
 ﻿#include<stdio.h>
 #include<Windows.h>
 #include "snake.h"
-
+#include<stdlib.h>
+#include<time.h>
 HANDLE h_out;
 int score = 0;
 Point food;
