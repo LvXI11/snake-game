@@ -17,3 +17,5 @@ if(p.x==s->body[i].x&&p.y==s->body[i].y){
 }while(on_food);
 food=p;
 }
+
+
